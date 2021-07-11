@@ -1,0 +1,48 @@
+id: test-page
+type: PageSiderMenu
+properties:
+  title: Test # The title in the browser tab.
+layout:
+  contentJustify: center # Center the contents of the page.
+blocks:
+  - id: block_id
+    type: MobileMenu
+    properties:
+      selectedKeys: []
+      links:
+        - id: home
+          type: MenuLink
+          pageId: merchant-bnpl-initiation
+          properties:
+            icon: HomeOutlined
+            title: Merchant Bnpl Initiation
+            danger: false
+          links: []
+          style: null
+        - id: pages
+          type: MenuGroup
+          properties:
+            title: Pages
+            icon: LayoutOutlined
+            danger: false
+          links:
+            - id: page1
+              type: MenuLink
+              pageId: page1
+              properties:
+                title: Page 1
+                danger: false
+              style: null
+            - id: more_pages
+              type: MenuGroup
+              links:
+                - id: page3
+                  type: MenuLink
+                  pageId: page3
+              pageId: null
+              properties:
+                danger: false
+                title: null
+              style: null
+          pageId: null
+          style: null

@@ -1,0 +1,56 @@
+id: login-page
+type: PageSiderMenu
+properties:
+  title: Login # The title in the browser tab.
+layout:
+  contentJustify: center # Center the contents of the page.
+blocks:
+  - id: content_card
+    type: Card
+    layout:
+      size: 800 # Set the size of the card so it does not fill the full screen.
+      contentGutter: 16 # Make a 16px gap between all blocks in this card.
+    blocks:
+      - id: page_heading
+        type: Title
+        properties:
+          content: Login # Change the title on the page.
+          level: 3 # Make the title a little smaller (an html `<h3>`).
+      - id: country_code
+        type: Selector
+        layout:
+          span: 6
+        properties:
+          label:
+            title: Country
+          options:
+            - label: +234 Nigeria
+              value: 234
+              disabled: false
+            - label: +235 Kenya
+              value: 235
+              disabled: false
+          placeholder: Select a value
+      - id: block_id
+        type: TextInput
+        layout:
+          span: 18
+        properties:
+          placeholder: Enter a value
+          label:
+            colon: false
+          title: Mobile
+      - id: bottom_block
+        type: Title
+        layout:
+          grow: 1
+      - id: submit_button
+        type: Button
+        layout:
+          # grow: 0
+          span: 5
+        properties:
+          title: Submit
+          block: true
+          type: primary
+          color: "#1890ff"

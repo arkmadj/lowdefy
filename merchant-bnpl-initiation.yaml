@@ -1,0 +1,81 @@
+id: merchant-bnpl-initiation-page
+type: PageSiderMenu
+properties:
+  title: BNPL Initiation # The title in the browser tab.
+layout:
+  contentJustify: center # Center the contents of the page.
+blocks:
+  - id: content_card
+    type: Card
+    layout:
+      span: 16
+      contentGutter: 16
+    blocks:
+      - id: card_title
+        type: Title
+        properties:
+          content: COLLECT/UPLOAD KYC
+          level: 3
+      - id: form_card
+        type: Card
+        layout:
+          size: 800
+          contentGutter: 16
+        blocks:
+          - id: assign_ba
+            type: Selector
+            layout:
+              span: 24
+            properties:
+              label:
+                title: Assign BA to merchant
+              options:
+                - label: BA 1
+                  value: ba1
+                  disabled: false
+                - label: BA 2
+                  value: ba2
+                  disabled: false
+                - label: BA 3
+                  value: ba3
+                  disabled: false
+              placeholder: Select a value
+          - id: guarantor
+            type: Selector
+            layout:
+              span: 24
+            properties:
+              label:
+                title: Guarantor
+              options:
+                - label: Guarantor 1
+                  value: guarantor1
+                  disabled: false
+                - label: Guarantor 2
+                  value: guarantor2
+                  disabled: false
+                - label: Guarantor 3
+                  value: guarantor3
+                  disabled: false
+              placeholder: Select a value
+          - id: proposed_limit
+            type: TextInput
+            properties:
+              allowClear: true
+              placeholder: Enter a value
+              label: 
+                title: Proposed BNPL Limit
+          - id: bottom_block
+            type: Title
+            layout:
+              grow: 1
+          - id: submit_button
+            type: Button
+            layout:
+              # grow: 0
+              span: 5
+            properties:
+              title: Submit
+              block: true
+              type: primary
+              color: "#1890ff"

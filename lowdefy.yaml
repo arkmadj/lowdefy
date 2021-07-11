@@ -1,0 +1,143 @@
+
+lowdefy: 3.18.1
+name: Lowdefy starter
+
+menus:
+  - id: default
+    links:
+      - id: login # Define the menu link that directs to the brands page.
+        type: MenuLink
+        pageId: login-page # Id of the brands page.
+        properties:
+          title: Login # Title to show on the menu.
+          icon: ShopOutlined # Give the menu item a icon, see a list of all availible icons at https://ant.design/components/icon/
+      - id: merchant
+        type: MenuGroup
+        properties:
+          title: Merchant
+          icon: RestOutlined
+        links:
+          - id: merchant-initiation
+            type: MenuLink
+            pageId: merchant-bnpl-initiation-page
+            properties:
+              title: BNPL Initiation
+              danger: false
+          - id: merchant-approval
+            type: MenuLink
+            pageId: merchant-bnpl-approval-page
+            properties:
+              title: BNPL Approval
+              danger: false
+          - id: merchant-bnpl
+            type: MenuLink
+            pageId: merchant-bnpl-page
+            properties:
+              title: Merchant BNPL
+              danger: false
+          - id: merchant-collections
+            type: MenuLink
+            pageId: merchant-collections-page
+            properties:
+              title: Collections
+              danger: false
+          - id: merchant-disbursements
+            type: MenuLink
+            pageId: merchant-disbursements-page
+            properties:
+              title: Disbursements
+              danger: false
+          - id: merchant_cashback
+            type: MenuLink
+            pageId: merchant-cashback-page
+            properties:
+              title: Merchant Cashback
+              danger: false
+          - id: bnpl-bundles
+            type: MenuLink
+            pageId: bnpl-bundles-page
+            properties:
+              title: BNPL Bundles
+              danger: false
+          - id: merchant-clients
+            type: MenuLink
+            pageId: merchant-clients-page
+            properties:
+              title: Merchant Clients
+              danger: false
+          - id: merchant-notificaions-page
+            type: MenuLink
+            pageId: merchant-notifications-page
+            properties:
+              title: Notifications
+              danger: false
+          - id: merchant-reset-pin
+            type: MenuLink
+            pageId: reset-merchant-pin-page
+            properties:
+              title: Reset Merchant PIN 
+              danger: false
+
+pages:
+  - _ref: login.yaml
+  - _ref: merchant-page.yaml
+  - _ref: test.yaml
+
+  # Merchant Pages
+  - _ref: merchant-bnpl-initiation.yaml
+  - _ref: merchant-bnpl-approval.yaml
+  - _ref: merchant-bnpl.yaml
+  - _ref: merchant-collections.yaml
+  - _ref: merchant-disbursements.yaml
+  - _ref: merchant-cashback.yaml
+  - _ref: bnpl-bundles.yaml
+  - _ref: merchant-clients.yaml
+  - _ref: merchant-notifications.yaml
+  - _ref: reset-merchant-pin.yaml
+  - _ref: ginger.yaml
+  - id: welcome
+    type: PageSiderMenu
+    properties:
+      title: Welcome
+    areas:
+      content:
+        justify: center
+        blocks:
+          - id: content_card
+            type: Card
+            style:
+              maxWidth: 800
+            blocks:
+              - id: content
+                type: Result
+                properties:
+                  title: Welcome to your Lowdefy app
+                  subTitle: We are excited to see what you are going to build
+                  icon:
+                    name: HeartTwoTone
+                    color: '#f00'
+                areas:
+                  extra:
+                    blocks:
+                      - id: docs_button
+                        type: Button
+                        properties:
+                          size: large
+                          title: Let's build something
+                          color: '#1890ff'
+                        events:
+                          onClick:
+                            - id: link_to_docs
+                              type: Link
+                              params:
+                                url: https://docs.lowdefy.com
+                                newTab: true
+      footer:
+        blocks:
+          - id: footer
+            type: Paragraph
+            properties:
+              type: secondary
+              content: |
+                Made by a Lowdefy 🤖
+

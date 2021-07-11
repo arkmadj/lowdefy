@@ -1,0 +1,50 @@
+id: reset-merchant-pin-page
+type: PageSiderMenu
+properties:
+  title: Reset Merchant PIN # The title in the browser tab.
+layout:
+  contentJustify: center # Center the contents of the page.
+blocks:
+  - id: content_card
+    type: Card
+    layout:
+      span: 12
+      contentGutter: 16
+    blocks:
+      - id: form_card
+        type: Card
+        layout:
+          contentGutter: 16
+        blocks:
+          - id: assign_ba
+            type: Selector
+            layout:
+              span: 24
+            properties:
+              label:
+                title: Select merchant to reset PIN
+              options:
+                - label: Merchant 1
+                  value: merchant1
+                  disabled: false
+                - label: Merchant 2
+                  value: merchant2
+                  disabled: false
+                - label: Merchant 3
+                  value: merchant3
+                  disabled: false
+              placeholder: Select a value
+          - id: bottom_block
+            type: Title
+            layout:
+              grow: 1
+          - id: submit_button
+            type: Button
+            layout:
+              # grow: 0
+              span: 5
+            properties:
+              title: Submit
+              block: true
+              type: primary
+              color: "#1890ff"

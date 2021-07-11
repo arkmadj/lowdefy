@@ -1,0 +1,18 @@
+id: merchant-bnpl-page
+type: PageSiderMenu
+properties:
+  title: Merchant BNPL # The title in the browser tab.
+layout:
+  contentJustify: center # Center the contents of the page.
+blocks:
+  - id: content_card
+    type: Card
+    layout:
+      span: 12
+      contentGutter: 16
+    blocks:
+      - id: card_title
+        type: Title
+        properties:
+          content: BNPL Drawdowns
+          level: 3
