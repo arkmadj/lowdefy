@@ -2,6 +2,9 @@
 lowdefy: 3.18.1
 name: Lowdefy starter
 
+types:
+  AgGridAlpine:
+    url: https://blocks-cdn.lowdefy.com/v3.12.3/blocks-aggrid/meta/AgGridAlpine.json
 
 connections:
 - id: shara_api
@@ -12,12 +15,6 @@ connections:
 menus:
   - id: default
     links:
-      - id: login # Define the menu link that directs to the brands page.
-        type: MenuLink
-        pageId: login-page # Id of the brands page.
-        properties:
-          title: Login # Title to show on the menu.
-          icon: ShopOutlined # Give the menu item a icon, see a list of all availible icons at https://ant.design/components/icon/
       - id: merchant
         type: MenuGroup
         properties:
@@ -84,11 +81,20 @@ menus:
             properties:
               title: Reset Merchant PIN 
               danger: false
+      - id: view-merchants
+        type: MenuLink
+        pageId: view-merchants-page
+        properties:
+          title: View Merchants
+          icon: ShopOutlined
+      - id: login # Define the menu link that directs to the brands page.
+        type: MenuLink
+        pageId: login-page # Id of the brands page.
+        properties:
+          title: Login # Title to show on the menu.
+          icon: ShopOutlined # Give the menu item a icon, see a list of all availible icons at https://ant.design/components/icon/
 
 pages:
-  - _ref: login.yaml
-  - _ref: merchant-page.yaml
-  - _ref: test.yaml
 
   # Merchant Pages
   - _ref: merchant-bnpl-initiation.yaml
@@ -101,50 +107,9 @@ pages:
   - _ref: merchant-clients.yaml
   - _ref: merchant-notifications.yaml
   - _ref: reset-merchant-pin.yaml
-  - _ref: ginger.yaml
-  - id: welcome
-    type: PageSiderMenu
-    properties:
-      title: Welcome
-    areas:
-      content:
-        justify: center
-        blocks:
-          - id: content_card
-            type: Card
-            style:
-              maxWidth: 800
-            blocks:
-              - id: content
-                type: Result
-                properties:
-                  title: Welcome to your Lowdefy app
-                  subTitle: We are excited to see what you are going to build
-                  icon:
-                    name: HeartTwoTone
-                    color: '#f00'
-                areas:
-                  extra:
-                    blocks:
-                      - id: docs_button
-                        type: Button
-                        properties:
-                          size: large
-                          title: Let's build something
-                          color: '#1890ff'
-                        events:
-                          onClick:
-                            - id: link_to_docs
-                              type: Link
-                              params:
-                                url: https://docs.lowdefy.com
-                                newTab: true
-      footer:
-        blocks:
-          - id: footer
-            type: Paragraph
-            properties:
-              type: secondary
-              content: |
-                Made by a Lowdefy 🤖
 
+  # View Merchants Page
+  - _ref: view-merchants-page.yaml
+
+  # Login Page
+  - _ref: login.yaml

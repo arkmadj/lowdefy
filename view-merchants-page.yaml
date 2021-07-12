@@ -1,0 +1,218 @@
+id: view-merchants-page
+type: PageSiderMenu
+properties:
+  title: Merchants # The title in the browser tab.
+layout:
+  contentJustify: center # Center the contents of the page.
+blocks:
+  - id: content_card
+    type: Card
+    layout:
+      size: 900
+      contentGutter: 10
+    blocks:
+      - id: card_title
+        type: Title
+        properties:
+          content: MERCHANTS
+          level: 3
+      # - id: form_box
+      #   type: Box
+      #   blocks:
+      #     - id: form_block
+      #       type: Title
+      #       layout:
+      #         grow: 1
+      - id: form_section
+        type: Box
+        layout:        
+          # contentGutter: 2
+        #   span: 18
+        blocks:
+          - id: input_box
+            type: Box
+            blocks:
+              - id: form_block
+                type: Title
+                layout:
+                  grow: 1
+              - id: input
+                type: Box
+                layout:
+                  span: 18
+                blocks:
+                  - id: input_label
+                    type: Label
+                    layout:
+                      flex: 1
+                    properties:
+                      title: User ID
+                  - id: user_id
+                    type: TextInput
+                    layout:
+                      span: 20
+                    properties:
+                      placeholder: Enter a value
+                      label:
+                        disabled: true
+          - id: input_box
+            type: Box
+            blocks:
+              - id: form_block
+                type: Title
+                layout:
+                  grow: 1
+              - id: input
+                type: Box
+                layout:
+                  span: 18
+                blocks:
+                  - id: input_label
+                    type: Label
+                    layout:
+                      flex: 1
+                    properties:
+                      title: BNPL Status
+                  - id: bnpl_status
+                    type: Selector
+                    layout:
+                      span: 20
+                    properties:
+                      label:
+                        disabled: true
+                      options:
+                        - label: Status 1
+                          value: ba1
+                          disabled: false
+                        - label: Status 2
+                          value: ba2
+                          disabled: false
+                        - label: Status 3
+                          value: ba3
+                          disabled: false
+                      placeholder: Select a value
+          - id: input_box
+            type: Box
+            blocks:
+              - id: form_block
+                type: Title
+                layout:
+                  grow: 1
+              - id: input
+                type: Box
+                layout:
+                  span: 18
+                blocks:
+                  - id: input_label
+                    type: Label
+                    layout:
+                      flex: 1
+                    properties:
+                      title: Search
+                  - id: search
+                    type: TextInput
+                    events:
+                      onChange:
+                        - id: search_table
+                          gridOptions.api.setQuickFilter:
+                            _state: search
+                    layout:
+                      span: 20
+                    properties:
+                      placeholder: Enter a value
+                      label:
+                        disabled: true
+      - id: table_section
+        type: AgGridAlpine
+        properties:
+          pagination: true
+          domLayout: autoHeight
+          paginationPageSize: 10
+          animateRows: true
+          quickFilterText:
+            _state: search
+          rowData:
+            - id: 1
+              businessName: Business One
+              mobile: 342343434234
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+            - id: 2
+              businessName: Business Two
+              mobile: 342343220103
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+            - id: 3
+              businessName: Business Three
+              mobile: 201342342340
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+            - id: 4
+              businessName: Business Four
+              mobile: 203423423241
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+            - id: 5
+              businessName: Business One
+              mobile: 342343434234
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+            - id: 6
+              businessName: Business Two
+              mobile: 342343220103
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+            - id: 7
+              businessName: Business Three
+              mobile: 201342342340
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+            - id: 8
+              businessName: Business Four
+              mobile: 203423423241
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+            - id: 9
+              businessName: Business One
+              mobile: 342343434234
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+            - id: 10
+              businessName: Business Two
+              mobile: 342343220103
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+            - id: 11
+              businessName: Business Three
+              mobile: 201342342340
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+            - id: 12
+              businessName: Business Four
+              mobile: 203423423241
+              bnplProposedLimit: 30
+              bnplApprovedLimit: 30
+          defaultColDef:
+            sortable: true
+            resizable: false
+            filter: true
+          columnDefs:
+            - headerName: ID
+              field: id
+              width: 100
+            - headerName: Business Name
+              field: businessName
+              width: 150
+            - headerName: Mobile
+              field: mobile
+              width: 180
+              # type: numericColumn
+            - headerName: BNPL Proposed Limit
+              field: bnplProposedLimit
+              width: 200
+              # type: numericColumn
+            - headerName: BNPL Appproved Limit
+              field: bnplApprovedLimit
+              width: 200
+              # type: numericColumn
+
