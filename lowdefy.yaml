@@ -6,6 +6,12 @@ types:
   AgGridAlpine:
     url: https://blocks-cdn.lowdefy.com/v3.12.3/blocks-aggrid/meta/AgGridAlpine.json
 
+connections:
+- id: shara_api
+  type: AxiosHttp
+  properties:
+    baseURL: https://b22463c669df.ngrok.io/v1
+
 menus:
   - id: default
     links:
