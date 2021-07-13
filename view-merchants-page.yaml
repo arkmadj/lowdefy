@@ -17,7 +17,7 @@ blocks:
   - id: content_card
     type: Card
     layout:
-      size: 900
+      size: 1000
       contentGutter: 10
     blocks:
       - id: card_title
@@ -80,15 +80,18 @@ blocks:
                       label:
                         disabled: true
                       options:
-                        - label: Status 1
-                          value: ba1
+                        - label: All
+                          value: 
                           disabled: false
-                        - label: Status 2
-                          value: ba2
+                        - label: Pending
+                          value: pending
                           disabled: false
-                        - label: Status 3
-                          value: ba3
+                        - label: In Review
+                          value: in_review
                           disabled: false
+                        - label: Approved
+                          disabled: false
+                          value: approved
                       placeholder: Select a value
           - id: input_box
             type: Box
@@ -188,18 +191,18 @@ blocks:
               bnplApprovedLimit: 30
           defaultColDef:
             sortable: true
-            resizable: false
+            resizable: true
             filter: true
           columnDefs:
             - headerName: ID
               field: id
-              width: 100
+              width: 135
             - headerName: Business Name
               field: businessName
-              width: 150
+              width: 200
             - headerName: Mobile
               field: mobile
-              width: 180
+              width: 200
               # type: numericColumn
             - headerName: BNPL Proposed Limit
               field: bnplProposedLimit
