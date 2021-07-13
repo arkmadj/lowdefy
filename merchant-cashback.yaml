@@ -21,6 +21,8 @@ blocks:
         blocks:
           - id: input_box
             type: Box
+            style:
+              margin-bottom: 20
             blocks:
               - id: form_block
                 type: Title
@@ -29,18 +31,20 @@ blocks:
               - id: input
                 type: Box
                 layout:
-                  span: 18
+                  span: 20
                 blocks:
                   - id: input_label
-                    type: Label
+                    type: Html
                     layout:
                       flex: 1
                     properties:
-                      title: Filter by merchant
+                      html:
+                        _nunjucks:
+                          template: <font><b>Filter by merchant</b></font>
                   - id: bnpl_status
                     type: Selector
                     layout:
-                      span: 18
+                      span: 20
                     properties:
                       label:
                         disabled: true
