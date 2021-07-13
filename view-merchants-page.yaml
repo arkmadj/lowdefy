@@ -2,6 +2,15 @@ id: view-merchants-page
 type: PageSiderMenu
 properties:
   title: Merchants # The title in the browser tab.
+
+events:
+  onEnter:
+    - id: logger
+      type: SetState
+      params:
+        _log:
+          _global: user_details
+
 layout:
   contentJustify: center # Center the contents of the page.
 blocks:

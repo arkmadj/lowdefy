@@ -10,7 +10,7 @@ connections:
 - id: shara_api
   type: AxiosHttp
   properties:
-    baseURL: https://b22463c669df.ngrok.io/v1
+    baseURL: https://f4bdde1c47bd.ngrok.io/v1
 
 menus:
   - id: default
