@@ -43,6 +43,8 @@ blocks:
         blocks:
           - id: input_box
             type: Box
+            style:
+              margin-bottom: 20
             blocks:
               - id: form_block
                 type: Title
@@ -51,14 +53,16 @@ blocks:
               - id: input
                 type: Box
                 layout:
-                  span: 18
+                  span: 20
                 blocks:
                   - id: input_label
-                    type: Label
+                    type: Html
                     layout:
                       flex: 1
                     properties:
-                      title: User ID
+                      html:
+                        _nunjucks:
+                          template: <font><b>User ID</b></font>
                   - id: user_id
                     type: TextInput
                     layout:
@@ -69,6 +73,8 @@ blocks:
                         disabled: true
           - id: input_box
             type: Box
+            style:
+              margin-bottom: 20
             blocks:
               - id: form_block
                 type: Title
@@ -77,14 +83,16 @@ blocks:
               - id: input
                 type: Box
                 layout:
-                  span: 18
+                  span: 20
                 blocks:
                   - id: input_label
-                    type: Label
+                    type: Html
                     layout:
                       flex: 1
                     properties:
-                      title: BNPL Status
+                      html:
+                        _nunjucks:
+                          template: <font><b>BNPL Status</b></font>
                   - id: bnpl_status
                     type: Selector
                     layout:
@@ -105,9 +113,10 @@ blocks:
                         - label: Approved
                           disabled: false
                           value: approved
-                      placeholder: Select a value
           - id: input_box
             type: Box
+            style:
+              margin-bottom: 20
             blocks:
               - id: form_block
                 type: Title
@@ -116,14 +125,16 @@ blocks:
               - id: input
                 type: Box
                 layout:
-                  span: 18
+                  span: 20
                 blocks:
                   - id: input_label
-                    type: Label
+                    type: Html
                     layout:
                       flex: 1
                     properties:
-                      title: Search
+                      html:
+                        _nunjucks:
+                          template: <font><b>Search</b></font>
                   - id: search
                     type: TextInput
                     layout:
