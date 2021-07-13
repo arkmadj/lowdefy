@@ -3,13 +3,26 @@ type: PageSiderMenu
 properties:
   title: Merchants # The title in the browser tab.
 
+requests:
+- id: fetch_merchants
+  type: AxiosHttp
+  connectionId: shara_api
+  properties:
+    url: /auth/users
+    method: get
+    responseType: json
+
+
 events:
   onEnter:
+    - id: get_merchants
+      type: Request
+      params: fetch_merchants
     - id: logger
       type: SetState
       params:
-        _log:
-          _global: user_details
+        table_section:
+          _actions: get_merchants.response.0.data.users
 
 layout:
   contentJustify: center # Center the contents of the page.
@@ -129,66 +142,66 @@ blocks:
           quickFilterText:
             _state: search
           rowData:
-            - id: 1
-              businessName: Business One
-              mobile: 342343434234
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 2
-              businessName: Business Two
-              mobile: 342343220103
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 3
-              businessName: Business Three
-              mobile: 201342342340
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 4
-              businessName: Business Four
-              mobile: 203423423241
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 5
-              businessName: Business One
-              mobile: 342343434234
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 6
-              businessName: Business Two
-              mobile: 342343220103
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 7
-              businessName: Business Three
-              mobile: 201342342340
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 8
-              businessName: Business Four
-              mobile: 203423423241
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 9
-              businessName: Business One
-              mobile: 342343434234
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 10
-              businessName: Business Two
-              mobile: 342343220103
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 11
-              businessName: Business Three
-              mobile: 201342342340
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 12
-              businessName: Business Four
-              mobile: 203423423241
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
+            _state: table_section 
+              # businessName: table_section.$.businesses.0.slug
+              # mobile: table_section.$.mobile
+              # bnplProposedLimit: table_section.$.approvals.0.amount_limit
+              # bnplApprovedLimit: table_section.$.approvals.0.amount_limit
+            # - id: 2
+            #   businessName: Business Two
+            #   mobile: 342343220103
+            #   bnplProposedLimit: 30
+            #   bnplApprovedLimit: 30
+            # - id: 3
+            #   businessName: Business Three
+            #   mobile: 201342342340
+            #   bnplProposedLimit: 30
+            #   bnplApprovedLimit: 30
+            # - id: 4
+            #   businessName: Business Four
+            #   mobile: 203423423241
+            #   bnplProposedLimit: 30
+            #   bnplApprovedLimit: 30
+            # - id: 5
+            #   businessName: Business One
+            #   mobile: 342343434234
+            #   bnplProposedLimit: 30
+            #   bnplApprovedLimit: 30
+            # - id: 6
+            #   businessName: Business Two
+            #   mobile: 342343220103
+            #   bnplProposedLimit: 30
+            #   bnplApprovedLimit: 30
+            # - id: 7
+            #   businessName: Business Three
+            #   mobile: 201342342340
+            #   bnplProposedLimit: 30
+            #   bnplApprovedLimit: 30
+            # - id: 8
+            #   businessName: Business Four
+            #   mobile: 203423423241
+            #   bnplProposedLimit: 30
+            #   bnplApprovedLimit: 30
+            # - id: 9
+            #   businessName: Business One
+            #   mobile: 342343434234
+            #   bnplProposedLimit: 30
+            #   bnplApprovedLimit: 30
+            # - id: 10
+            #   businessName: Business Two
+            #   mobile: 342343220103
+            #   bnplProposedLimit: 30
+            #   bnplApprovedLimit: 30
+            # - id: 11
+            #   businessName: Business Three
+            #   mobile: 201342342340
+            #   bnplProposedLimit: 30
+            #   bnplApprovedLimit: 30
+            # - id: 12
+            #   businessName: Business Four
+            #   mobile: 203423423241
+            #   bnplProposedLimit: 30
+            #   bnplApprovedLimit: 30
           defaultColDef:
             sortable: true
             resizable: true
@@ -198,18 +211,19 @@ blocks:
               field: id
               width: 135
             - headerName: Business Name
-              field: businessName
+              field: businesses.0.slug
               width: 200
+              valueFormatter:
             - headerName: Mobile
               field: mobile
               width: 200
               # type: numericColumn
             - headerName: BNPL Proposed Limit
-              field: bnplProposedLimit
+              field: approvals.0.amount_limit
               width: 200
               # type: numericColumn
             - headerName: BNPL Appproved Limit
-              field: bnplApprovedLimit
+              field: approvals.0.amount_limit
               width: 200
               # type: numericColumn
 
