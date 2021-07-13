@@ -8,7 +8,7 @@ blocks:
   - id: content_card
     type: Card
     layout:
-      span: 16
+      size: 1000
       contentGutter: 16
     blocks:
       - id: card_title
@@ -19,7 +19,6 @@ blocks:
       - id: form_card
         type: Card
         layout:
-          size: 800
           contentGutter: 16
         blocks:
           - id: assign_ba
