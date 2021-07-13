@@ -16,18 +16,8 @@ blocks:
         properties:
           content: MERCHANTS
           level: 3
-      # - id: form_box
-      #   type: Box
-      #   blocks:
-      #     - id: form_block
-      #       type: Title
-      #       layout:
-      #         grow: 1
       - id: form_section
         type: Box
-        layout:        
-          # contentGutter: 2
-        #   span: 18
         blocks:
           - id: input_box
             type: Box
@@ -111,11 +101,6 @@ blocks:
                       title: Search
                   - id: search
                     type: TextInput
-                    events:
-                      onChange:
-                        - id: search_table
-                          gridOptions.api.setQuickFilter:
-                            _state: search
                     layout:
                       span: 20
                     properties:
