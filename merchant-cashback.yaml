@@ -8,7 +8,7 @@ blocks:
   - id: content_card
     type: Card
     layout:
-      span: 12
+      size: 1000
       contentGutter: 16
     blocks:
       - id: card_title
@@ -16,3 +16,162 @@ blocks:
         properties:
           content: Merchant Cashback
           level: 3
+      - id: form_section
+        type: Box
+        blocks:
+          - id: input_box
+            type: Box
+            blocks:
+              - id: form_block
+                type: Title
+                layout:
+                  grow: 1
+              - id: input
+                type: Box
+                layout:
+                  span: 18
+                blocks:
+                  - id: input_label
+                    type: Label
+                    layout:
+                      flex: 1
+                    properties:
+                      title: Filter by merchant
+                  - id: bnpl_status
+                    type: Selector
+                    layout:
+                      span: 18
+                    properties:
+                      label:
+                        disabled: true
+                      options:
+                        - label: Status 1
+                          value: ba1
+                          disabled: false
+                        - label: Status 2
+                          value: ba2
+                          disabled: false
+                        - label: Status 3
+                          value: ba3
+                          disabled: false
+                      placeholder: Select a value
+      - id: cashback_table
+        type: AgGridAlpine
+        properties:
+          pagination: true
+          domLayout: autoHeight
+          paginationPageSize: 10
+          animateRows: true
+          quickFilterText:
+            _state: search
+          rowData:
+            - first_name: 1
+              last_name: 1
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+            - first_name: 2
+              last_name: 2
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+            - first_name: 3
+              last_name: 3
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+            - first_name: 4
+              last_name: 4
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+            - first_name: 5
+              last_name: 5
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+            - first_name: 6
+              last_name: 6
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+            - first_name: 7
+              last_name: 7
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+            - first_name: 8
+              last_name: 8
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+            - first_name: 9
+              last_name: 9
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+            - first_name: 10
+              last_name: 10
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+            - first_name: 11
+              last_name: 11
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+            - first_name: 12
+              last_name: 12
+              business_name: 342343434234
+              email: 30
+              currency_code: 30
+              mobile: 30
+              amount: 30
+          defaultColDef:
+            sortable: true
+            resizable: true
+            filter: true
+          columnDefs:
+            - headerName: First Name
+              field: first_name
+              width: 135
+            - headerName: Last Name
+              field: last_name
+              width: 135
+            - headerName: Business Name
+              field: business_name
+              width: 135
+            - headerName: Email
+              field: email
+              width: 135
+            - headerName: Currency Code
+              field: currency_code
+              width: 135
+            - headerName: Mobile
+              field: mobile
+              width: 135
+            - headerName: Amount
+              field: amount
+              width: 135

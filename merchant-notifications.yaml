@@ -8,7 +8,7 @@ blocks:
   - id: content_card
     type: Card
     layout:
-      span: 12
+      size: 900
       contentGutter: 16
     blocks:
       - id: card_title
@@ -16,3 +16,123 @@ blocks:
         properties:
           content: Notifications
           level: 3
+      - id: notification_table
+        type: AgGridAlpine
+        properties:
+          pagination: true
+          domLayout: autoHeight
+          paginationPageSize: 10
+          animateRows: true
+          quickFilterText:
+            _state: search
+          rowData:
+            - id: 1
+              user_id: 1
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+            - id: 2
+              user_id: 2
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+            - id: 3
+              user_id: 3
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+            - id: 4
+              user_id: 4
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+            - id: 5
+              user_id: 5
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+            - id: 6
+              user_id: 6
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+            - id: 7
+              user_id: 7
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+            - id: 8
+              user_id: 8
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+            - id: 9
+              user_id: 9
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+            - id: 10
+              user_id: 10
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+            - id: 11
+              user_id: 11
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+            - id: 12
+              user_id: 12
+              title: 342343434234
+              body: 30
+              payload: 30
+              medium: 30
+              sent: 30
+          defaultColDef:
+            sortable: true
+            resizable: true
+            filter: true
+          columnDefs:
+            - headerName: ID
+              field: id
+              width: 90
+            - headerName: User ID
+              field: user_id
+              width: 125
+            - headerName: Title
+              field: title
+              width: 125
+            - headerName: Body
+              field: body
+              width: 125
+            - headerName: Payload
+              field: payload
+              width: 125
+            - headerName: Medium
+              field: medium
+              width: 125
+            - headerName: Sent
+              field: sent
+              width: 125
