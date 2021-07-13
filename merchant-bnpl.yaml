@@ -44,7 +44,7 @@ blocks:
                   - id: bnpl_status
                     type: Selector
                     layout:
-                      span: 20
+                      span: 18
                     properties:
                       label:
                         disabled: true
