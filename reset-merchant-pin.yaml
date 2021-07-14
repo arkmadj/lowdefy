@@ -8,7 +8,7 @@ blocks:
   - id: content_card
     type: Card
     layout:
-      span: 12
+      size: 1000
       contentGutter: 16
     blocks:
       - id: form_card

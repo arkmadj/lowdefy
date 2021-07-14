@@ -8,7 +8,7 @@ blocks:
   - id: content_card
     type: Card
     layout:
-      span: 12
+      size: 1000
       contentGutter: 16
     blocks:
       - id: card_title
@@ -16,3 +16,53 @@ blocks:
         properties:
           content: BNPL Bundles
           level: 3
+      - id: disbursements_table
+        type: AgGridAlpine
+        properties:
+          pagination: true
+          domLayout: autoHeight
+          paginationPageSize: 10
+          animateRows: true
+          quickFilterText:
+            _state: search
+          rowData:
+            - id: 100
+              bnpl_product_id: 232
+              repayment_period: 5
+              repayment_period_unit: weeks
+              interest_rate: 1.25
+              interest_rate_unit: weeks
+              payment_frequency: 7
+              payment_frequency_unit: weeks
+          defaultColDef:
+            sortable: true
+            resizable: true
+            filter: true
+          columnDefs:
+            - headerName: ID
+              field: id
+              width: 75
+            - headerName: BNPL Product ID
+              field: bnpl_product_id
+              width: 109
+            - headerName: Repayment Period
+              field: repayment_period
+              width: 109
+            - headerName: Repayment Period Unit
+              field: repayment_period_unit
+              width: 109
+            - headerName: Interest Rate
+              field: interest_rate
+              width: 109
+            - headerName: Interest Rate Unit
+              field: interest_rate_unit
+              width: 109
+            - headerName: Payment Frequency
+              field: payment_frequency
+              width: 109
+            - headerName: Payment Frequency
+              field: payment_frequency
+              width: 109
+            - headerName: Payment Frequency Unit
+              field: payment_frequency_unit
+              width: 109
