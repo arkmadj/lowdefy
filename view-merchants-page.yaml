@@ -6,11 +6,14 @@ properties:
 requests:
 - id: fetch_merchants
   type: AxiosHttp
-  connectionId: shara_api
+  connectionId: metabase_api
   properties:
-    url: /auth/users
-    method: get
+    url: /api/card/116/query/json
+    method: post
     responseType: json
+    headers:
+      X-Metabase-Session:
+        _global: metabase_id.response.0.data.id
 
 
 events:
@@ -22,7 +25,7 @@ events:
       type: SetState
       params:
         table_section:
-          _actions: get_merchants.response.0.data.users
+          _actions: get_merchants.response.0.data
 
 layout:
   contentJustify: center # Center the contents of the page.
@@ -219,22 +222,22 @@ blocks:
             filter: true
           columnDefs:
             - headerName: ID
-              field: id
+              field: User ID
               width: 135
             - headerName: Business Name
-              field: businesses.0.slug
+              field: Businesses - User → Slug
               width: 200
               valueFormatter:
             - headerName: Mobile
-              field: mobile
+              field: Users → Mobile
               width: 200
               # type: numericColumn
             - headerName: BNPL Proposed Limit
-              field: approvals.0.amount_limit
+              field: Amount Limit
               width: 200
               # type: numericColumn
             - headerName: BNPL Appproved Limit
-              field: approvals.0.amount_limit
+              field: Amount Limit
               width: 200
               # type: numericColumn
 

@@ -7,10 +7,14 @@ types:
     url: https://blocks-cdn.lowdefy.com/v3.12.3/blocks-aggrid/meta/AgGridAlpine.json
 
 connections:
+- id: metabase_api
+  type: AxiosHttp
+  properties:
+    baseURL: https://metabase.shara.co
 - id: shara_api
   type: AxiosHttp
   properties:
-    baseURL: https://4dc86a85ed3e.ngrok.io/v1
+    baseURL: localhost #env later
 
 menus:
   - id: default
