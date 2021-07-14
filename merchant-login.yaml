@@ -1,7 +1,7 @@
-id: login-page
+id: merchant-login-page
 type: PageSiderMenu
 properties:
-  title: Login # The title in the browser tab.
+  title: Merchant Login # The title in the browser tab.
 layout:
   contentJustify: center # Center the contents of the page.
 
@@ -41,69 +41,74 @@ blocks:
   - id: content_card
     type: Card
     layout:
-      size: 800 # Set the size of the card so it does not fill the full screen.
+      size: 1000 # Set the size of the card so it does not fill the full screen.
       contentGutter: 16 # Make a 16px gap between all blocks in this card.
     blocks:
-      - id: page_heading
-        type: Title
-        properties:
-          content: Login # Change the title on the page.
-          level: 3 # Make the title a little smaller (an html `<h3>`).
-      - id: country_code
-        type: Selector
-        required: true
+      - id: login_box
+        type: Box
         layout:
-          span: 6
-        properties:
-          label:
-            title: Country
-          options:
-            - label: +234 Nigeria
-              value: 234
-              disabled: false
-            - label: +235 Kenya
-              value: 235
-              disabled: false
-          placeholder: Select a value
-      - id: mobile
-        type: TextInput
-        required: true
-        layout:
-          span: 18
-        properties:
-          placeholder: Enter a value
-          label:
-            colon: false
-          title: Mobile
-      - id: bottom_block
-        type: Title
-        layout:
-          grow: 1
-      - id: submit_button
-        type: Button
-        layout:
-          # grow: 0
-          span: 5
-        properties:
-          title: Submit
-          block: true
-          type: primary
-          color: "#1890ff"
-        events:
-          onClick:
-            - id: validate
-              type: Validate
-              params:
-                - country_code
-                - mobile
-            - id: otp
-              type: Request
-              params: create_otp
-            - id: set_response
-              type: SetState
-              params:
-                res_block:
-                  _actions: otp
+          contentGutter: 16 
+        blocks:
+          - id: page_heading
+            type: Title
+            properties:
+              content: Merchant Login # Change the title on the page.
+              level: 3 # Make the title a little smaller (an html `<h3>`).
+          - id: country_code
+            type: Selector
+            required: true
+            layout:
+              span: 6
+            properties:
+              label:
+                title: Country
+              options:
+                - label: +234 Nigeria
+                  value: 234
+                  disabled: false
+                - label: +235 Kenya
+                  value: 235
+                  disabled: false
+              placeholder: Select a value
+          - id: mobile
+            type: TextInput
+            required: true
+            layout:
+              span: 18
+            properties:
+              placeholder: Enter a value
+              label:
+                colon: false
+              title: Mobile
+          - id: bottom_block
+            type: Title
+            layout:
+              grow: 1
+          - id: submit_button
+            type: Button
+            layout:
+              # grow: 0
+              span: 5
+            properties:
+              title: Submit
+              block: true
+              type: primary
+              color: "#1890ff"
+            events:
+              onClick:
+                - id: validate
+                  type: Validate
+                  params:
+                    - country_code
+                    - mobile
+                - id: otp
+                  type: Request
+                  params: create_otp
+                - id: set_response
+                  type: SetState
+                  params:
+                    res_block:
+                      _actions: otp
       - id: res_block
         type: Alert
         visible:
@@ -118,11 +123,11 @@ blocks:
           type: success
       - id: enter_otp
         type: Box
-        visible:
-          _eq:
-            - _not:
-                _state: res_block
-            - false
+        # visible:
+        #   _eq:
+        #     - _not:
+        #         _state: res_block
+        #     - false
         # layout:
         #   span: 12
         #   contentGutter: 16
@@ -144,15 +149,23 @@ blocks:
                   allowClear: true
                   placeholder: Enter PIN
                   label:
-                    title: Enter otp here
+                    title: Enter OTP here
               - id: bottom_block
                 type: Title
                 layout:
                   grow: 1
+              - id: back_to_login
+                type: Button
+                layout:
+                  span: 5
+                properties:
+                  title: Back to login
+                  block: true
+                  type: primary
+                  color: '#bfbfbf'
               - id: otp_login
                 type: Button
                 layout:
-                  # grow: 0
                   span: 5
                 properties:
                   title: Enter
