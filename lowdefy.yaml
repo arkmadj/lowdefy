@@ -10,7 +10,7 @@ connections:
 - id: shara_api
   type: AxiosHttp
   properties:
-    baseURL: https://f4bdde1c47bd.ngrok.io/v1
+    baseURL: https://4dc86a85ed3e.ngrok.io/v1
 
 menus:
   - id: default
@@ -87,12 +87,18 @@ menus:
         properties:
           title: View Merchants
           icon: ShopOutlined
-      - id: login # Define the menu link that directs to the brands page.
+      - id: merchant-login
         type: MenuLink
-        pageId: login-page # Id of the brands page.
+        pageId: merchant-login-page
         properties:
-          title: Login # Title to show on the menu.
-          icon: ShopOutlined # Give the menu item a icon, see a list of all availible icons at https://ant.design/components/icon/
+          title: Merchant Login
+          icon: ShopOutlined
+      - id: admin-login
+        type: MenuLink
+        pageId: admin-login-page
+        properties:
+          title: Admin Login
+          icon: ShopOutlined
 
 pages:
 
@@ -111,5 +117,6 @@ pages:
   # View Merchants Page
   - _ref: view-merchants-page.yaml
 
-  # Login Page
-  - _ref: login.yaml
+  # Login Pages
+  - _ref: merchant-login.yaml
+  - _ref: admin-login.yaml
