@@ -4,6 +4,32 @@ properties:
   title: Merchant BNPL # The title in the browser tab.
 layout:
   contentJustify: center # Center the contents of the page.
+
+
+requests:
+- id: fetch_drawdowns
+  type: AxiosHttp
+  connectionId: metabase_api
+  properties:
+    url: /api/card/120/query/json
+    method: post
+    responseType: json
+    headers:
+      X-Metabase-Session:
+        _global: metabase_id.response.0.data.id
+
+
+events:
+  onEnter:
+    - id: get_drawdowns
+      type: Request
+      params: fetch_drawdowns
+    - id: logger
+      type: SetState
+      params:
+        bnpl_drawdown_table:
+          _actions: get_drawdowns.response.0.data
+
 blocks:
   - id: content_card
     type: Card
@@ -71,113 +97,30 @@ blocks:
           quickFilterText:
             _state: search
           rowData:
-            - id: 1
-              currency_code: 1
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
-            - id: 2
-              currency_code: 2
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
-            - id: 3
-              currency_code: 3
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
-            - id: 4
-              currency_code: 4
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
-            - id: 5
-              currency_code: 5
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
-            - id: 6
-              currency_code: 6
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
-            - id: 7
-              currency_code: 7
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
-            - id: 8
-              currency_code: 8
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
-            - id: 9
-              currency_code: 9
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
-            - id: 10
-              currency_code: 10
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
-            - id: 11
-              currency_code: 11
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
-            - id: 12
-              currency_code: 12
-              amount_drawn: 342343434234
-              amount_repaid: 30
-              amount_owed: 30
-              status: 30
-              completed_at: 30
+            _state: bnpl_drawdown_table
           defaultColDef:
             sortable: true
             resizable: true
             filter: true
           columnDefs:
             - headerName: ID
-              field: id
+              field: ID
               width: 135
             - headerName: Currency Code
-              field: currency_code
+              field: Currency Code
               width: 135
             - headerName: Amount Drawn
-              field: amount_drawn
+              field: Amount Drawn
               width: 135
             - headerName: Amount Repaid
-              field: amount_repaid
+              field: Amount Repaid
               width: 135
-            - headerName: Currency Code
-              field: currency_code
+            - headerName: Amount Owed
+              field: Amount Owed
               width: 135
             - headerName: Status
-              field: status
+              field: Status
               width: 135
             - headerName: Completed at
-              field: completed_at
+              field: Completed At
               width: 135
