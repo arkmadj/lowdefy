@@ -4,6 +4,32 @@ properties:
   title: Merchant Cashback # The title in the browser tab.
 layout:
   contentJustify: center # Center the contents of the page.
+
+
+requests:
+- id: fetch_cashbacks
+  type: AxiosHttp
+  connectionId: metabase_api
+  properties:
+    url: /api/card/121/query/json
+    method: post
+    responseType: json
+    headers:
+      X-Metabase-Session:
+        _global: metabase_id.response.0.data.id
+
+
+events:
+  onEnter:
+    - id: get_cashbacks
+      type: Request
+      params: fetch_cashbacks
+    - id: logger
+      type: SetState
+      params:
+        cashback_table:
+          _actions: get_cashbacks.response.0.data
+
 blocks:
   - id: content_card
     type: Card
@@ -69,113 +95,30 @@ blocks:
           quickFilterText:
             _state: search
           rowData:
-            - first_name: 1
-              last_name: 1
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
-            - first_name: 2
-              last_name: 2
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
-            - first_name: 3
-              last_name: 3
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
-            - first_name: 4
-              last_name: 4
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
-            - first_name: 5
-              last_name: 5
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
-            - first_name: 6
-              last_name: 6
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
-            - first_name: 7
-              last_name: 7
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
-            - first_name: 8
-              last_name: 8
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
-            - first_name: 9
-              last_name: 9
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
-            - first_name: 10
-              last_name: 10
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
-            - first_name: 11
-              last_name: 11
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
-            - first_name: 12
-              last_name: 12
-              business_name: 342343434234
-              email: 30
-              currency_code: 30
-              mobile: 30
-              amount: 30
+            _state: cashback_table
           defaultColDef:
             sortable: true
             resizable: true
             filter: true
           columnDefs:
             - headerName: First Name
-              field: first_name
+              field: Users → Firstname
               width: 135
             - headerName: Last Name
-              field: last_name
+              field: Users → Lastname
               width: 135
             - headerName: Business Name
               field: business_name
               width: 135
             - headerName: Email
-              field: email
+              field: Users → Email
               width: 135
             - headerName: Currency Code
-              field: currency_code
+              field: Users → Currency Code
               width: 135
             - headerName: Mobile
-              field: mobile
+              field: Users → Mobile
               width: 135
             - headerName: Amount
-              field: amount
+              field: Amount
               width: 135
