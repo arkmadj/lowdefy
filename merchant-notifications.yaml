@@ -62,6 +62,7 @@ blocks:
           domLayout: autoHeight
           paginationPageSize: 10
           animateRows: true
+          cacheBlockSize: 10
           quickFilterText:
             _state: search
           rowData:
