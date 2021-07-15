@@ -7,6 +7,8 @@ layout:
 blocks:
   - id: content_card
     type: Card
+    style:
+      margin-bottom: 20
     layout:
       size: 1000
       contentGutter: 16
@@ -62,8 +64,332 @@ blocks:
             properties:
               allowClear: true
               placeholder: Enter a value
-              label: 
+              label:
                 title: Proposed BNPL Limit
+          - id: bottom_block
+            type: Title
+            layout:
+              grow: 1
+          - id: submit_button
+            type: Button
+            layout:
+              # grow: 0
+              span: 5
+            properties:
+              title: Submit
+              block: true
+              type: primary
+              color: "#1890ff"
+  - id: content_card
+    type: Card
+    layout:
+      size: 1000
+      contentGutter: 16
+    blocks:
+      - id: card_title
+        type: Title
+        properties:
+          content: COLLECT/UPLOAD KYC
+          level: 3
+      - id: form_card
+        type: Card
+        layout:
+          contentGutter: 16
+        blocks:
+          - id: full_name
+            type: TextInput
+            properties:
+              allowClear: true
+              placeholder: Enter a value
+              label:
+                title: Full Name
+          - id: date_of_birth
+            type: DateSelector
+            properties:
+              allowClear: true
+              placeholder: Select Date of Birth
+              label:
+                title: Date of Birth
+              suffixIcon: CalendarFilled
+          - id: home_address
+            type: TextArea
+            properties:
+              allowClear: true
+              placeholder: Enter a value
+              label:
+                title: Home Address
+          - id: purpose_of_fund
+            type: TextArea
+            properties:
+              allowClear: true
+              placeholder: Enter a value
+              label:
+                title: Purpose or Use of funds
+          - id: monthly_revenue
+            type: TextInput
+            properties:
+              allowClear: true
+              placeholder: Enter a value
+              label:
+                title: Monthly Revenue
+          - id: geolocation
+            type: TextInput
+            properties:
+              allowClear: true
+              placeholder: Enter in the format - 1.23435,2.34853
+              label:
+                title: Geolocation
+          - id: business_category
+            type: Selector
+            layout:
+              span: 24
+            properties:
+              label:
+                title: Business Category
+              options:
+                - label: BA 1
+                  value: ba1
+                  disabled: false
+                - label: BA 2
+                  value: ba2
+                  disabled: false
+                - label: BA 3
+                  value: ba3
+                  disabled: false
+              placeholder: Select a value
+          - id: merchant_trained
+            type: Switch
+            properties:
+              label:
+                title: Mark Merchant as Trained
+          - id: business_owner_box
+            type: Box
+            style:
+              margin-bottom: 50
+            blocks:
+              - id: business_owner_check
+                type: CheckboxSelector
+                layout:
+                  span: 12
+                properties:
+                  options:
+                    - label: Business Owner Photo
+                      value: business_owner_photo_checkbox
+                      disabled: false
+                  label:
+                    colon: false
+                  title: ""
+              - id: business_owner_upload_button
+                type: Button
+                layout:
+                  flex: 1
+                properties:
+                  color: "#AAAAAA"
+                  block: true
+                  title: Upload
+          - id: shop_photo_box
+            type: Box
+            style:
+              margin-bottom: 50
+            blocks:
+              - id: shop_photo_check
+                type: CheckboxSelector
+                layout:
+                  span: 12
+                properties:
+                  options:
+                    - label: Shop Photo
+                      value: shop_photo_checkbox
+                      disabled: false
+                  label:
+                    colon: false
+                  title: ""
+              - id: shop_photo_buttons_box
+                type: Box
+                layout:
+                  flex: 1
+                  contentGutter: 16
+                blocks:
+                  - id: shop_photo_download_button
+                    type: Button
+                    layout:
+                      span: 24
+                    properties:
+                      color: "#478B5F"
+                      block: true
+                      title: Download
+                  - id: shop_photo_upload_button
+                    type: Button
+                    layout:
+                      span: 24
+                    properties:
+                      color: "#AAAAAA"
+                      block: true
+                      title: Upload
+          - id: bank_statement_box
+            type: Box
+            style:
+              margin-bottom: 50
+            blocks:
+              - id: bank_statement_check
+                type: CheckboxSelector
+                layout:
+                  span: 12
+                properties:
+                  options:
+                    - label: Bank Statement
+                      value: bank_statement_checkbox
+                      disabled: false
+                  label:
+                    colon: false
+                  title: ""
+              - id: bank_statement_buttons_box
+                type: Box
+                layout:
+                  flex: 1
+                  contentGutter: 16
+                blocks:
+                  - id: bank_statement_download_button
+                    type: Button
+                    layout:
+                      span: 24
+                    properties:
+                      color: "#478B5F"
+                      block: true
+                      title: Download
+                  - id: bank_statement_upload_button
+                    type: Button
+                    layout:
+                      span: 24
+                    properties:
+                      color: "#AAAAAA"
+                      block: true
+                      title: Upload
+          - id: business_permit_photo_box
+            type: Box
+            style:
+              margin-bottom: 50
+            blocks:
+              - id: business_permit_photo_check
+                type: CheckboxSelector
+                layout:
+                  span: 12
+                properties:
+                  options:
+                    - label: Business Permit Photo
+                      value: business_permit_photo_checkbox
+                      disabled: false
+                  label:
+                    colon: false
+                  title: ""
+              - id: business_permit_photo_buttons_box
+                type: Box
+                layout:
+                  flex: 1
+                  contentGutter: 16
+                blocks:
+                  - id: business_permit_photo_download_button
+                    type: Button
+                    layout:
+                      span: 24
+                    properties:
+                      color: "#478B5F"
+                      block: true
+                      title: Download
+                  - id: business_permit_photo_upload_button
+                    type: Button
+                    layout:
+                      span: 24
+                    properties:
+                      color: "#AAAAAA"
+                      block: true
+                      title: Upload
+          - id: business_records_box
+            type: Box
+            style:
+              margin-bottom: 50
+            blocks:
+              - id: business_records_check
+                type: CheckboxSelector
+                layout:
+                  span: 12
+                properties:
+                  options:
+                    - label: Business Records
+                      value: business_records_checkbox
+                      disabled: false
+                  label:
+                    colon: false
+                  title: ""
+              - id: business_records_buttons_box
+                type: Box
+                layout:
+                  flex: 1
+                  contentGutter: 16
+                blocks:
+                  - id: business_records_download_button
+                    type: Button
+                    layout:
+                      span: 24
+                    properties:
+                      color: "#478B5F"
+                      block: true
+                      title: Download
+                  - id: business_records_upload_button
+                    type: Button
+                    layout:
+                      span: 24
+                    properties:
+                      color: "#AAAAAA"
+                      block: true
+                      title: Upload
+          - id: national_id_photo_box
+            type: Box
+            style:
+              margin-bottom: 50
+            blocks:
+              - id: national_id_photo_check
+                type: CheckboxSelector
+                layout:
+                  span: 12
+                properties:
+                  options:
+                    - label: National ID Photo
+                      value: national_id_photo_checkbox
+                      disabled: false
+                  label:
+                    colon: false
+                  title: ""
+              - id: national_id_photo_buttons_box
+                type: Box
+                layout:
+                  flex: 1
+                  contentGutter: 16
+                blocks:
+                  - id: national_id_photo_top_download_button
+                    type: Button
+                    layout:
+                      span: 24
+                    properties:
+                      color: "#478B5F"
+                      block: true
+                      title: Download
+                  - id: national_id_photo_upload_button
+                    type: Button
+                    layout:
+                      span: 24
+                    properties:
+                      color: "#AAAAAA"
+                      block: true
+                      title: Upload
+                  - id: national_id_photo_bottom_download_button
+                    type: Button
+                    layout:
+                      span: 24
+                    properties:
+                      color: "#478B5F"
+                      block: true
+                      title: Download
           - id: bottom_block
             type: Title
             layout:
