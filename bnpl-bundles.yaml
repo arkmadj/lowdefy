@@ -4,6 +4,49 @@ properties:
   title: BNPL Bundles # The title in the browser tab.
 layout:
   contentJustify: center # Center the contents of the page.
+
+
+requests:
+- id: fetch_bundles
+  type: AxiosHttp
+  connectionId: metabase_api
+  properties:
+    url: /api/card/124/query/json
+    method: post
+    responseType: json
+    headers:
+      X-Metabase-Session:
+        _global: metabase_id
+
+
+events:
+  onEnter:
+    - id: authenticate_session
+      type: JsAction
+      params:
+        name: authenticate
+    - id: get_session_id
+      type: JsAction
+      params:
+        name: get
+        args:
+          - metabase_id
+    - id: set_session_id
+      type: SetGlobal
+      params:
+        metabase_id:
+          _actions: get_session_id.response
+    - id: get_bundles
+      type: Request
+      params: fetch_bundles
+    - id: logger
+      type: SetState
+      params:
+        bundles_table:
+          _actions: get_bundles.response.0.data
+
+
+
 blocks:
   - id: content_card
     type: Card
@@ -16,7 +59,7 @@ blocks:
         properties:
           content: BNPL Bundles
           level: 3
-      - id: disbursements_table
+      - id: bundles_table
         type: AgGridAlpine
         properties:
           pagination: true
@@ -26,43 +69,36 @@ blocks:
           quickFilterText:
             _state: search
           rowData:
-            - id: 100
-              bnpl_product_id: 232
-              repayment_period: 5
-              repayment_period_unit: weeks
-              interest_rate: 1.25
-              interest_rate_unit: weeks
-              payment_frequency: 7
-              payment_frequency_unit: weeks
+            _state: bundles_table
           defaultColDef:
             sortable: true
             resizable: true
             filter: true
           columnDefs:
             - headerName: ID
-              field: id
+              field: ID
               width: 75
             - headerName: BNPL Product ID
-              field: bnpl_product_id
+              field: Bnpl Product ID
               width: 109
             - headerName: Repayment Period
-              field: repayment_period
+              field: Repayment Period
               width: 109
             - headerName: Repayment Period Unit
-              field: repayment_period_unit
+              field: Repayment Period Unit
               width: 109
             - headerName: Interest Rate
-              field: interest_rate
+              field: Interest Rate
               width: 109
             - headerName: Interest Rate Unit
-              field: interest_rate_unit
+              field: Interest Rate Unit
               width: 109
             - headerName: Payment Frequency
-              field: payment_frequency
-              width: 109
-            - headerName: Payment Frequency
-              field: payment_frequency
+              field: Payment Frequency
               width: 109
             - headerName: Payment Frequency Unit
-              field: payment_frequency_unit
+              field: Payment Frequency Unit
+              width: 109
+            - headerName: Arrangement Fee
+              field: Arrangement Fee
               width: 109

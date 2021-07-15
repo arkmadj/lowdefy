@@ -4,6 +4,46 @@ properties:
   title: Merchant Collections # The title in the browser tab.
 layout:
   contentJustify: center # Center the contents of the page.
+
+requests:
+- id: fetch_collections
+  type: AxiosHttp
+  connectionId: metabase_api
+  properties:
+    url: /api/card/122/query/json
+    method: post
+    responseType: json
+    headers:
+      X-Metabase-Session:
+        _global: metabase_id
+
+events:
+  onEnter:
+    - id: authenticate_session
+      type: JsAction
+      params:
+        name: authenticate
+    - id: get_session_id
+      type: JsAction
+      params:
+        name: get
+        args:
+          - metabase_id
+    - id: set_session_id
+      type: SetGlobal
+      params:
+        metabase_id:
+          _actions: get_session_id.response
+    - id: get_collections
+      type: Request
+      params: fetch_collections
+    - id: logger
+      type: SetState
+      params:
+        collections_table:
+          _actions: get_collections.response.0.data
+
+
 blocks:
   - id: content_card
     type: Card
@@ -69,29 +109,30 @@ blocks:
           quickFilterText:
             _state: search
           rowData:
+            _state: collections_table
           defaultColDef:
             sortable: true
             resizable: true
             filter: true
           columnDefs:
             - headerName: ID
-              field: id
+              field: ID
               width: 135
             - headerName: Amount
-              field: amount_owed
+              field: Amount
               width: 135
             - headerName: Customer ID
-              field: customer_id
+              field: Customer ID
               width: 135
             - headerName: Provider
-              field: provider
+              field: Provider
               width: 135
             - headerName: Currency Code
-              field: currency_code
+              field: Currency Code
               width: 135
             - headerName: External Reference
-              field: external_reference
+              field: External Reference
               width: 135
             - headerName: Status
-              field: status
+              field: Status
               width: 135
