@@ -187,6 +187,19 @@ blocks:
                   color: "#AAAAAA"
                   block: true
                   title: Upload
+                events:
+                  onClick:
+                    - id: upload_business_owner
+                      type: JsAction
+                      params:
+                        name: handleUpload
+                        args:
+                          - business_owner
+                    - id: loggert
+                      type: SetState
+                      params:
+                        _log:
+                          _actions: upload_business_owner.response
           - id: shop_photo_box
             type: Box
             style:
@@ -226,6 +239,19 @@ blocks:
                       color: "#AAAAAA"
                       block: true
                       title: Upload
+                    events:
+                      onClick:
+                        - id: shop_photo_upload_button
+                          type: JsAction
+                          params:
+                            name: handleUpload
+                            args:
+                              - business_owner
+                        - id: loggert
+                          type: SetState
+                          params:
+                            _log:
+                              _actions: shop_photo_upload_button.response
           - id: bank_statement_box
             type: Box
             style:
@@ -265,6 +291,19 @@ blocks:
                       color: "#AAAAAA"
                       block: true
                       title: Upload
+                    events:
+                      onClick:
+                        - id: bank_statement_upload_button
+                          type: JsAction
+                          params:
+                            name: handleUpload
+                            args:
+                              - business_owner
+                        - id: loggert
+                          type: SetState
+                          params:
+                            _log:
+                              _actions: bank_statement_upload_button.response
           - id: business_permit_photo_box
             type: Box
             style:
@@ -304,6 +343,19 @@ blocks:
                       color: "#AAAAAA"
                       block: true
                       title: Upload
+                    events:
+                      onClick:
+                        - id: upload_bank_statement
+                          type: JsAction
+                          params:
+                            name: handleUpload
+                            args:
+                              - business_owner
+                        - id: loggert
+                          type: SetState
+                          params:
+                            _log:
+                              _actions: upload_bank_statement.response
           - id: business_records_box
             type: Box
             style:
@@ -343,6 +395,19 @@ blocks:
                       color: "#AAAAAA"
                       block: true
                       title: Upload
+                    events:
+                      onClick:
+                        - id: upload_business_record
+                          type: JsAction
+                          params:
+                            name: handleUpload
+                            args:
+                              - business_owner
+                        - id: loggert
+                          type: SetState
+                          params:
+                            _log:
+                              _actions: upload_business_record.response
           - id: national_id_photo_box
             type: Box
             style:
@@ -382,6 +447,19 @@ blocks:
                       color: "#AAAAAA"
                       block: true
                       title: Upload
+                    events:
+                      onClick:
+                        - id: national_id_upload
+                          type: JsAction
+                          params:
+                            name: handleUpload
+                            args:
+                              - business_owner
+                        - id: loggert
+                          type: SetState
+                          params:
+                            _log:
+                              _actions: national_id_upload.response
                   - id: national_id_photo_bottom_download_button
                     type: Button
                     layout:
