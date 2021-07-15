@@ -32,7 +32,7 @@ blocks:
   - id: content_card
     type: Card
     layout:
-      size: 900
+      size: 1000
       contentGutter: 16
     blocks:
       - id: card_title
