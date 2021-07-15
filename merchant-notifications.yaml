@@ -15,10 +15,25 @@ requests:
     responseType: json
     headers:
       X-Metabase-Session:
-        _global: metabase_id.response.0.data.id
+        _global: metabase_id
 
 events:
   onEnter:
+    - id: authenticate_session
+      type: JsAction
+      params:
+        name: authenticate
+    - id: get_session_id
+      type: JsAction
+      params:
+        name: get
+        args:
+          - metabase_id
+    - id: set_session_id
+      type: SetGlobal
+      params:
+        metabase_id:
+          _actions: get_session_id.response
     - id: get_notifications
       type: Request
       params: fetch_notifications
