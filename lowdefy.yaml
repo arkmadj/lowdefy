@@ -2,15 +2,26 @@
 lowdefy: 3.18.1
 name: Lowdefy starter
 
+app:
+  html:
+    # Load the custom modules into the index.html head tag.
+    appendHead: |
+      <script type="module" src="/public/modules.js"></script>
+
 types:
   AgGridAlpine:
     url: https://blocks-cdn.lowdefy.com/v3.12.3/blocks-aggrid/meta/AgGridAlpine.json
 
 connections:
+- id: metabase_api
+  type: AxiosHttp
+  properties:
+    baseURL: https://metabase.shara.co
 - id: shara_api
   type: AxiosHttp
   properties:
-    baseURL: https://4dc86a85ed3e.ngrok.io/v1
+    baseURL: localhost #env later
+    
 
 menus:
   - id: default

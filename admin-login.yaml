@@ -6,6 +6,22 @@ layout:
   contentJustify: center # Center the contents of the page.
 
 
+requests:
+- id: metabase_session
+  type: AxiosHttp
+  connectionId: metabase_api
+  properties:
+    url: /api/session/
+    method: post
+    responseType: json
+    body:
+      _state: true
+    data:
+      username: 
+        _state: username
+      password:
+        _state: password
+
 blocks:
   - id: content_card
     type: Card
@@ -23,7 +39,7 @@ blocks:
             properties:
               content: Admin Login # Change the title on the page.
               level: 3 # Make the title a little smaller (an html `<h3>`).
-          - id: email
+          - id: username
             type: TextInput
             required: true
             properties:
@@ -52,5 +68,20 @@ blocks:
               block: true
               type: primary
               color: "#1890ff"
+            events:
+              onClick:
+                - id: validate
+                  type: Validate
+                  params:
+                    - username
+                    - password
+                - id: session
+                  type: Request
+                  params: metabase_session
+                - id: set_session_id
+                  type: SetGlobal
+                  params:
+                    metabase_id:
+                      _actions: session
 
 

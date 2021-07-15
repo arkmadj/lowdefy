@@ -3,13 +3,29 @@ type: PageSiderMenu
 properties:
   title: Merchants # The title in the browser tab.
 
+requests:
+- id: fetch_merchants
+  type: AxiosHttp
+  connectionId: metabase_api
+  properties:
+    url: /api/card/116/query/json
+    method: post
+    responseType: json
+    headers:
+      X-Metabase-Session:
+        _global: metabase_id.response.0.data.id
+
+
 events:
   onEnter:
+    - id: get_merchants
+      type: Request
+      params: fetch_merchants
     - id: logger
       type: SetState
       params:
-        _log:
-          _global: user_details
+        table_section:
+          _actions: get_merchants.response.0.data
 
 layout:
   contentJustify: center # Center the contents of the page.
@@ -140,87 +156,29 @@ blocks:
           quickFilterText:
             _state: search
           rowData:
-            - id: 1
-              businessName: Business One
-              mobile: 342343434234
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 2
-              businessName: Business Two
-              mobile: 342343220103
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 3
-              businessName: Business Three
-              mobile: 201342342340
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 4
-              businessName: Business Four
-              mobile: 203423423241
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 5
-              businessName: Business One
-              mobile: 342343434234
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 6
-              businessName: Business Two
-              mobile: 342343220103
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 7
-              businessName: Business Three
-              mobile: 201342342340
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 8
-              businessName: Business Four
-              mobile: 203423423241
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 9
-              businessName: Business One
-              mobile: 342343434234
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 10
-              businessName: Business Two
-              mobile: 342343220103
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 11
-              businessName: Business Three
-              mobile: 201342342340
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
-            - id: 12
-              businessName: Business Four
-              mobile: 203423423241
-              bnplProposedLimit: 30
-              bnplApprovedLimit: 30
+            _state: table_section 
           defaultColDef:
             sortable: true
             resizable: true
             filter: true
           columnDefs:
             - headerName: ID
-              field: id
+              field: User ID
               width: 135
             - headerName: Business Name
-              field: businessName
+              field: Businesses - User → Slug
               width: 200
+              valueFormatter:
             - headerName: Mobile
-              field: mobile
+              field: Users → Mobile
               width: 200
               # type: numericColumn
             - headerName: BNPL Proposed Limit
-              field: bnplProposedLimit
+              field: Amount Limit
               width: 200
               # type: numericColumn
             - headerName: BNPL Appproved Limit
-              field: bnplApprovedLimit
+              field: Amount Limit
               width: 200
               # type: numericColumn
 
