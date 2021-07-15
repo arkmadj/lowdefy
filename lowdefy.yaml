@@ -2,6 +2,12 @@
 lowdefy: 3.18.1
 name: Lowdefy starter
 
+app:
+  html:
+    # Load the custom modules into the index.html head tag.
+    appendHead: |
+      <script type="module" src="/public/modules.js"></script>
+
 types:
   AgGridAlpine:
     url: https://blocks-cdn.lowdefy.com/v3.12.3/blocks-aggrid/meta/AgGridAlpine.json
@@ -15,6 +21,7 @@ connections:
   type: AxiosHttp
   properties:
     baseURL: localhost #env later
+    
 
 menus:
   - id: default
