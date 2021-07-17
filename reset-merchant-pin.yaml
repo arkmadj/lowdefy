@@ -4,6 +4,14 @@ properties:
   title: Reset Merchant PIN # The title in the browser tab.
 layout:
   contentJustify: center # Center the contents of the page.
+
+events:
+  onEnter:
+    - id: authenticate_session
+      type: JsAction
+      params:
+        name: authenticate
+        
 blocks:
   - id: content_card
     type: Card
