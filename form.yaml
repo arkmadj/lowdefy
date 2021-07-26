@@ -5,6 +5,26 @@ properties:
 layout:
   contentJustify: center
 
+requests:
+  - id: find_by_id
+    type:  MongoDBFindOne
+    connectionId: form_db
+    properties:
+      query:
+        _id:
+          _oid: "60fee9ff3ca70427f9db4614"
+
+events:
+  onEnter:
+    - id: get_form
+      type: Request
+      params: find_by_id
+    - id: set_form
+      type: SetState
+      params:
+        questions:
+          _actions: get_form.response.0.questions
+
 blocks:
   - id: form_body_card
     type: Card
@@ -18,6 +38,120 @@ blocks:
           percent: 30
           strokeWidth: 10
           trailColor: '#d9d9d9'
+
+      - id: questions
+        type: List
+        layout:
+          contentGutter: 16
+        blocks:
+          # TYPE: TEXT
+          - id: questions.$.id
+            type: Box
+            visible:
+              _eq:
+                - _state: questions.$.type
+                - "text"
+            layout:
+              contentGutter: 6
+            blocks:
+              - id: answer_text_box
+                type: Box
+                layout:
+                  contentAlign: middle
+                  contentGutter: 6
+                blocks:
+                  - id: question_title_text  
+                    type: Title
+                    properties:
+                      level: 4
+                      content:
+                        _state: questions.$.question
+                  - id: questions.$.id + response
+                    type: TextInput
+                    properties:
+                      placeholder: Enter your response
+                      label:
+                        disabled: true
+          
+          # TYPE: CHECKBOX
+          - id: questions.$.id
+            type: Box
+            visible: 
+              _eq:
+                - _state: questions.$.type
+                - "check_box"
+            layout:
+              contentGutter: 6
+            blocks:
+              - id: answer_check_box
+                type: Box
+                layout:
+                  contentAlign: middle
+                  contentGutter: 6
+                blocks:
+                  - id: question_title_checkbox 
+                    type: Title
+                    properties:
+                      level: 4
+                      content:
+                        _state: questions.$.question
+                  - id: questions.$.check_options
+                    type: CheckboxSelector
+                    layout:
+                      flex: 0 1 auto
+                    properties:
+                      label:
+                        disabled: true
+                      options:
+                        _state: questions.$.options
+          
+          # TYPE: RADIO
+          - id: questions.$.id
+            type: Box
+            visible: 
+              _eq:
+                - _state: questions.$.type
+                - "radio_button"
+            layout:
+              contentGutter: 6
+            blocks:
+              - id: answer_radio_box
+                type: Box
+                layout:
+                  contentAlign: middle
+                  contentGutter: 6
+                blocks:
+                  - id: question_title_radio 
+                    type: Title
+                    properties:
+                      level: 4
+                      content:
+                        _state: questions.$.question
+                  - id: questions.$.radio_options
+                    type: RadioSelector
+                    layout:
+                      flex: 0 1 auto
+                    properties:
+                      label:
+                        disabled: true
+                      options:
+                        _state: questions.$.options
+
+          # # TYPE FILE UPLOAD
+          # - id: shop_photo_upload_button
+          #   type: Button
+          #   layout:
+          #     span: 24
+          #   visible: 
+          #     _eq:
+          #       - _state: questions.$ + type_input
+          #       - "file"
+          #   properties:
+          #     color: "#AAAAAA"
+          #     block: true
+          #     title: Upload
+
+
       - id: bottom_buttons
         type: Box
         layout:

@@ -21,6 +21,13 @@ connections:
   type: AxiosHttp
   properties:
     baseURL: localhost #env later
+- id: form_db
+  type: MongoDBCollection
+  properties:
+    databaseUri: "mongodb://localhost:27017"
+    databaseName: form-builder
+    collection: forms
+    write: true
     
 
 menus:
