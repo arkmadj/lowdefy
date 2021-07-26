@@ -92,12 +92,16 @@ menus:
             properties:
               title: Reset Merchant PIN 
               danger: false
+
+      # View Merchant Links
       - id: view-merchants
         type: MenuLink
         pageId: view-merchants-page
         properties:
           title: View Merchants
           icon: ShopOutlined
+      
+      # Login Links
       - id: merchant-login
         type: MenuLink
         pageId: merchant-login-page
@@ -110,6 +114,26 @@ menus:
         properties:
           title: Admin Login
           icon: ShopOutlined
+      
+      # Form Builder Links
+      - id: form-builder
+        type: MenuGroup
+        properties:
+          title: Form Builder
+          icon: RestOutlined
+        links:
+          - id: form-builder-editor
+            type: MenuLink
+            pageId: form-builder-editor-page
+            properties:
+              title: Editor
+              danger: false
+          - id: form-builder-form
+            type: MenuLink
+            pageId: form-builder-form-page
+            properties:
+              title: Form
+              danger: false
 
 pages:
 
@@ -131,3 +155,7 @@ pages:
   # Login Pages
   - _ref: merchant-login.yaml
   - _ref: admin-login.yaml
+
+  # Form Builder Pages  
+  - _ref: form-builder.yaml
+  - _ref: form.yaml

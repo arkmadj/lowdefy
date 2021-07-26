@@ -1,0 +1,57 @@
+id: form-builder-form-page
+type: PageSiderMenu
+properties:
+  title: Form
+layout:
+  contentJustify: center
+
+blocks:
+  - id: form_body_card
+    type: Card
+    layout:
+      size: 1000
+      contentGutter: 16
+    blocks:
+      - id: progress_bar
+        type: Progress
+        properties:
+          percent: 30
+          strokeWidth: 10
+          trailColor: '#d9d9d9'
+      - id: bottom_buttons
+        type: Box
+        layout:
+          size: 1000
+        blocks:
+          - id: left_bottom_box
+            type: Box
+            layout:
+              flex: 1 1 auto
+              contentGutter: 16
+            blocks:
+              - id: add_button
+                type: Button
+                layout:
+                  size: 2
+                properties:
+                  color: "#478B5F"
+                  title: PREV
+                  size: large
+                  block: true
+          - id: right_bottom_box
+            type: Box
+            layout:
+              # flex: 1 1 auto
+              size: 2
+              contentGutter: 5
+            blocks:
+              - id: save
+                type: Button
+                layout:
+                  # span: 20
+                  # flex: 1 1 auto
+                properties:
+                  color: "#478B5F"
+                  title: NEXT
+                  size: large
+                  block: true

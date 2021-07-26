@@ -1,0 +1,318 @@
+id: form-builder-editor-page
+type: PageSiderMenu
+properties:
+  title: Form Builder
+layout:
+  contentJustify: center
+  contentGutter: 16
+
+
+blocks:
+  - id: form_header_card
+    type: Card
+    layout:
+      size: 1000
+      contentGutter: 16
+    blocks:
+      - id: form_title
+        type: TitleInput
+        value: Untited form
+      - id: form_description
+        type: ParagraphInput
+        value: Form description
+  - id: form_body_card
+    type: Card
+    layout:
+      size: 1000
+      contentGutter: 16
+    blocks:
+      - id: main_box
+        type: Box
+        layout:
+          contentGutter: 35
+        blocks:
+          - id: question_box
+            type: Box
+            layout:
+              contentGutter: 25
+              span: 14
+            blocks:
+              - id: question_input
+                type: TextInput
+                properties:
+                  placeholder: Question
+                  label:
+                    disabled: true
+              - id: answer_block
+                type: Box
+                layout:
+                  contentGutter: 12
+                blocks:
+
+                # TYPE: TEXT
+                - id: answer_text_container
+                  type: Box
+                  visible:
+                    _eq:
+                      - _state: type_input
+                      - "text"
+                  layout:
+                    contentGutter: 6
+                  blocks:
+                    - id: answer_text_box
+                      type: Box
+                      layout:
+                        contentAlign: middle
+                        contentGutter: 6
+                      blocks:
+                        - id: answer_text
+                          type: TextInput
+                          properties:
+                            placeholder: Text answer
+                            label:
+                              disabled: true
+                
+                # TYPE: CHECKBOX
+                - id: answer_checkbox_container
+                  type: Box
+                  visible:
+                    _eq:
+                      - _state: type_input
+                      - "check_box"
+                  layout:
+                    contentGutter: 6
+                  blocks:
+                    - id: answer_checkbox_box
+                      type: Box
+                      layout:
+                        contentAlign: middle
+                        contentGutter: 6
+                      blocks:
+                      - id: answer_checkbox
+                        type: CheckboxSelector
+                        layout:
+                          flex: 0 1 auto
+                        properties:
+                          disabled: true
+                          options:
+                            - label: ''
+                          label:
+                            disabled: true
+                      - id: answer_checkbox_input
+                        type: TextInput
+                        layout: 
+                          flex: 1 1 auto
+                        properties:
+                          placeholder: Option 1
+                          label:
+                            disabled: true
+                      - id: answer_checkbox_remove_icon
+                        type: Icon
+                        layout: 
+                          flex: 0 1 auto
+                        properties:
+                          name: CloseCircleFilled
+                          size: 20
+                
+                # TYPE: RADIO
+                - id: answer_radio_container
+                  type: Box
+                  visible: 
+                    _eq:
+                      - _state: type_input
+                      - "radio_button"
+                  layout:
+                    contentGutter: 6
+                  blocks:
+                    - id: answer_radio_box
+                      type: Box
+                      layout:
+                        contentAlign: middle
+                        contentGutter: 6
+                      blocks:
+                      - id: answer_radio
+                        type: RadioSelector
+                        layout:
+                          flex: 0 1 auto
+                        properties:
+                          disabled: true
+                          options:
+                            - label: ''
+                          label:
+                            disabled: true
+                      - id: answer_radio_input
+                        type: TextInput
+                        layout: 
+                          flex: 1 1 auto
+                        properties:
+                          placeholder: Option 1
+                          label:
+                            disabled: true
+                      - id: answer_radio_remove_icon
+                        type: Icon
+                        layout: 
+                          flex: 0 1 auto
+                        properties:
+                          name: CloseCircleFilled
+                          size: 20
+                    - id: answer_radio_footer
+                      type: Box
+                      layout:
+                        contentGutter: 6
+                      blocks:
+                      - id: add_answer_radio_option
+                        type: Button
+                        layout:
+                          span: 8
+                        properties:
+                          color: "#1890ff"
+                          block: true
+                          title: Add Option
+                      - id: add_answer_radio_option
+                        type: Button
+                        layout:
+                          span: 8
+                        properties:
+                          color: "#1890ff"
+                          block: true
+                          title: Add Other
+
+                # TYPE FILE UPLOAD
+                - id: shop_photo_upload_button
+                  type: Button
+                  layout:
+                    span: 24
+                  properties:
+                    color: "#AAAAAA"
+                    block: true
+                    title: Upload
+          - id: type_box
+            type: Box
+            layout:
+              contentGutter: 25
+              span: 10
+            blocks:
+              - id: type_input
+                type: Selector
+                properties:
+                  placeholder: Question Type
+                  options:
+                    - label: Text
+                      value: "text"
+                    - label: File Upload
+                      value: file_upload
+                    - label: Radio Button
+                      value: radio_button
+                    - label: Check Box
+                      value: check_box
+                    - label: Dropdown List
+                      value: dropdown_list
+                  label:
+                    disabled: true      
+      - id: card_divider
+        type: Divider
+      - id: footer_box
+        type: Box
+        layout:
+          contentAlign: middle
+        blocks:
+          - id: right_box
+            type: Box
+            layout:
+              flex: 1 1 auto
+            blocks:
+              - id: exlude_check_box
+                type: CheckboxSelector
+                properties:
+                  options:
+                    - label: BA
+                      value: ba
+                    - label: Customer
+                      value: customer
+                  label:
+                    inline: true
+                    title: Exclude
+          - id: left_box
+            type: Box
+            layout:
+              contentAlign: middle
+              # contentGutter: 16
+              flex: 0 1 auto
+              # span: 6
+            blocks:
+              - id: required_box
+                type: Switch
+                layout:
+                  flex: 0 1 auto
+                properties:
+                  label:
+                    colon: false
+                    inline: true
+                  title: Required
+              - id: block_divider
+                type: Divider
+                properties:
+                  layout:
+                    flex: 0 1 auto
+                  type: vertical
+                layout:
+                  span: 2
+              - id: block_id
+                type: Icon
+                layout:
+                  flex: 0 1 auto
+                  align: center
+                properties:
+                  color: '#595959'
+                  name: DeleteFilled
+                  size: 20
+  - id: bottom_buttons
+    type: Box
+    layout:
+      size: 1000
+    blocks:
+      - id: left_bottom_box
+        type: Box
+        layout:
+          flex: 1 1 auto
+          contentGutter: 16
+        blocks:
+          - id: add_button
+            type: Button
+            layout:
+              span: 5
+            properties:
+              color: "#478B5F"
+              title: Add
+              size: large
+              block: true
+      - id: right_bottom_box
+        type: Box
+        layout:
+          # flex: 1 1 auto
+          span: 6
+          contentGutter: 5
+        blocks:
+          - id: save
+            type: Button
+            layout:
+              # span: 20
+              flex: 1 1 auto
+            properties:
+              color: "#478B5F"
+              title: Save
+              size: large
+              block: true
+          - id: publish
+            type: Button
+            layout:
+              # span: 20
+              # span: 5
+              flex: 1 1 auto
+            properties:
+              color: "#478B5F"
+              title: Publish
+              size: large
+              block: true
+
+
